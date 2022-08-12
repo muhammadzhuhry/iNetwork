@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var util: Utilities
+    @State private var showModal = false
+    
     var body: some View {
-        Text("Hello, world!")
+        VStack {
+            Text("Hi there! 👋🏻")
+            Button(action: {
+                self.util.monitorNetwork()
+                self.showModal.toggle()
+            }) {
+                Text("Check Network")
+                    .padding()
+                    .background(Color.orange)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(20)
+            }
             .padding()
+        }
     }
 }
 
